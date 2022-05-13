@@ -16,7 +16,19 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create #create update none
+      ddl-auto: update #create update none
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
+
+  output:
+    ansi:
+      enabled: always
+
+logging:
+  level:
+    org:
+      apache:
+        coyote:
+          http11: debug
+    root: info
