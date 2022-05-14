@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class Member {
     @Id @GeneratedValue
     @Column(name = "member_id")
-    private String id;
+    private Long id;
 
     private String name;
 
@@ -30,8 +30,7 @@ public class Member {
     protected Member() {
     }
 
-    public Member(String id, String name, String password, String email, String role, String provider, String providerId) {
-        this.id = id;
+    public Member(String name, String password, String email, String role, String provider, String providerId) {
         this.name = name;
         this.password = password;
         this.email = email;

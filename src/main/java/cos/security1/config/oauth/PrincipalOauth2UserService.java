@@ -4,7 +4,6 @@ import cos.security1.config.auth.PrincipalDetails;
 import cos.security1.domain.Member;
 import cos.security1.respository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -52,10 +51,12 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         String role = "ROLE_USER";
 
         Member memberEntity = memberRepository.findByName(username);
+
         if (memberEntity == null) {
-            Member member = new Member(providerId, username, password, email, role, provider, providerId);
-            memberRepository.save(member);
+            memberEntity = new Member(username, password, email, role, provider, providerId);
+            memberRepository.save(memberEntity);
         }
+
         return new PrincipalDetails(memberEntity, oAuth2User.getAttributes());
     }
 }
