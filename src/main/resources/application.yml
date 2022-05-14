@@ -25,10 +25,22 @@ spring:
     ansi:
       enabled: always
 
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 119906876181-1gj5r1jfufesit66bh7jbif6ro53kdvo.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - profile
+
 logging:
   level:
-    org:
-      apache:
-        coyote:
-          http11: debug
     root: info
+#    org:
+#      apache:
+#        coyote:
+#          http11: debug
+
